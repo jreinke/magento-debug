@@ -28,12 +28,12 @@ Is is recommended to ignore this module files. Add this to your .gitignore file:
 
 ##### Enable debugging for current page
 
-http://shop.example.com/apparel.html`?debug=1`
+http://shop.example.com/apparel.html```?debug=1```
 
 ##### Enable debugging permanently
 
-http://shop.example.com/apparel.html`?debug=perm`
+http://shop.example.com/apparel.html```?debug=perm```
 
 ##### Disable permament debugging
 
-http://shop.example.com/apparel.html`?debug=0`
+http://shop.example.com/apparel.html```?debug=0```
