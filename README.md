@@ -1,4 +1,4 @@
-## Magento module to list rendered blocks tree and SQL queries
+### Magento module to list rendered blocks tree and SQL queries
 
 ![Rendered blocks](http://i.imgur.com/6spPPyQ.png)
 
