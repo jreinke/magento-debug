@@ -36,7 +36,7 @@ class Bubble_Debug_Model_Observer
             return;
         }
 
-        if (!$this->_debugEnabled) {
+        if (!$this->isDebugEnabled()) {
             return;
         }
 
@@ -52,7 +52,7 @@ class Bubble_Debug_Model_Observer
 
     public function onBlockToHtmlBefore(Varien_Event_Observer $observer)
     {
-        if (!$this->_debugEnabled) {
+        if (!$this->isDebugEnabled()) {
             return;
         }
 
@@ -65,7 +65,7 @@ class Bubble_Debug_Model_Observer
 
     public function onBlockToHtmlAfter(Varien_Event_Observer $observer)
     {
-        if (!$this->_debugEnabled) {
+        if (!$this->isDebugEnabled()) {
             return;
         }
 
@@ -107,7 +107,7 @@ class Bubble_Debug_Model_Observer
 
     public function onSqlQueryBefore(Varien_Event_Observer $observer)
     {
-        if (!$this->_debugEnabled) {
+        if (!$this->isDebugEnabled()) {
             return;
         }
 
@@ -160,6 +160,16 @@ class Bubble_Debug_Model_Observer
             }
             $this->_debug['sql']['queries'][] = $debug;
         }
+    }
+
+    public function getDebug()
+    {
+        return $this->_debug;
+    }
+
+    public function isDebugEnabled()
+    {
+        return $this->_debugEnabled;
     }
 
     protected function _getBlockInfoHtml(&$html, $block, $level = 0)
