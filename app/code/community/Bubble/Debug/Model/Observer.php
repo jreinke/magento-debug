@@ -2,7 +2,7 @@
 /**
  * @category    Bubble
  * @package     Bubble_Debug
- * @version     1.0.0
+ * @version     1.0.1
  * @copyright   Copyright (c) 2013 BubbleCode (http://shop.bubblecode.net)
  */
 class Bubble_Debug_Model_Observer
