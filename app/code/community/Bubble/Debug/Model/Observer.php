@@ -115,9 +115,11 @@ class Bubble_Debug_Model_Observer
         $adapter = $observer->getEvent()->getAdapter();
         $sql = $observer->getEvent()->getQuery();
         $bind = $observer->getEvent()->getBind();
+        $took = $observer->getEvent()->getTook();
         if ($adapter && $sql) {
             $debug = array(
                 'query' => $sql,
+                'took' => $took,
                 'stack' => array(),
             );
             $debug['query'] = $sql;
@@ -239,8 +241,8 @@ class Bubble_Debug_Model_Observer
                 $id = uniqid(mt_rand());
                 $onclick = "var el = document.getElementById('$id');
                     el.style.display = el.style.display == 'none' ? 'block' : 'none';return false;";
-                $html .= '<a href="#" onclick="'. $onclick .'" style="color:#1e7ec8;"><strong>Stack Trace</strong></a>';
-                $html .= '<ol id="'. $id .'" style="display:none;white-space:pre;">';
+                $html .= '<a href="#" onclick="'. $onclick .'" style="color:#1e7ec8;"><strong>Stack Trace</strong></a>&nbsp;' . round($sql['took'], 4);
+                $html .= '<ul id="'. $id .'" style="display:none;white-space:pre;list-style:none;margin:0;">';
                 foreach ($sql['stack'] as $i => $info) {
                     $color = ($i % 2) ? '#f4f4f4' : '#dddddd';
                     foreach ($info as $key => $value) {
@@ -248,7 +250,7 @@ class Bubble_Debug_Model_Observer
                         $html .= '<li style="background-color:'. $color .';">' . $key . ' => ' . $value . '</li>';
                     }
                 }
-                $html .= '</ol>';
+                $html .= '</ul>';
                 $html .= '</li>';
             }
             $html .= '</ol>';
@@ -259,7 +261,7 @@ class Bubble_Debug_Model_Observer
 
     protected function _getDebugHtml()
     {
-        $html = '<pre style="text-align:left;background:white;padding: 10px 10px 20px;">';
+        $html = '<pre style="text-align:left;background:white;padding: 10px 10px 20px;font-size:12px;">';
         $html .= '<p style="font-size: 16px;margin:0 0 5px;border-bottom:1px dashed black;">';
         $html .= '<strong>Rendered Blocks</strong>';
         $html .= '</p>';

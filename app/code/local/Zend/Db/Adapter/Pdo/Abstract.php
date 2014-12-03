@@ -235,15 +235,20 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
         }
 
         // Bubble_Debug start
+        $start = microtime(true);
+        $result = parent::query($sql, $bind);
+
         if (class_exists('Mage')) {
             Mage::dispatchEvent('bubble_debug_sql_query_before', array(
                 'adapter'   => $this,
                 'query'     => $sql,
                 'bind'      => $bind,
+                'took'      => microtime(true) - $start,
             ));
         }
-        // Bubble_Debug end
 
+        return $result;
+        // Bubble_Debug end
         try {
             return parent::query($sql, $bind);
         } catch (PDOException $e) {
