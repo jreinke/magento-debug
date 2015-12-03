@@ -1,0 +1,9 @@
+{
+  "name": "buble/magento_debug",
+  "type": "magento-module",
+  "description": "Magento Debug",
+  "require": {
+    "php": ">=5.3",
+    "magento-hackathon/magento-composer-installer": "*"
+  }
+}
