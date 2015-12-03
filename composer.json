@@ -1,5 +1,5 @@
 {
-  "name": "buble/magento_debug",
+  "name": "bubble/magento_debug",
   "type": "magento-module",
   "description": "Magento Debug",
   "require": {
