@@ -231,7 +231,7 @@ class Bubble_Debug_Model_Observer
         $html = '';
         if (isset($this->_debug['sql']['queries'])) {
             $count = count($this->_debug['sql']['queries']);
-            $html = '<p style="font-size: 16px;margin:10px 0 5px;border-bottom:1px dashed black;">';
+            $html = '<p style="font-size: 14px;margin:5px 0;border-bottom:1px dashed black;">';
             $html .= '<strong>All SQL Queries ('. $count .')</strong>';
             $html .= '</p>';
             $html .= '<ol style="white-space:normal;">';
@@ -262,7 +262,16 @@ class Bubble_Debug_Model_Observer
     protected function _getDebugHtml()
     {
         $html = '<pre style="text-align:left;background:white;padding: 10px 10px 20px;font-size:12px;">';
-        $html .= '<p style="font-size: 16px;margin:0 0 5px;border-bottom:1px dashed black;">';
+        $html .= '<p style="font-size: 14px;margin:5px 0;border-bottom:1px dashed black;">';
+        $html .= '<strong>Design</strong>';
+        $html .= '</p>';
+        $html .= sprintf('<p style="margin:0;padding:0;">Package: %s </p>', Mage::getDesign()->getPackageName());
+        $html .= sprintf('<p style="margin:0;padding:0;">Theme: %s </p>', Mage::getDesign()->getTheme('default'));
+        $html .= '<p style="font-size: 14px;margin:5px 0;border-bottom:1px dashed black;">';
+        $html .= '<strong>Layout Updates</strong>';
+        $html .= '</p>';
+        $html .= implode('<br>', Mage::app()->getLayout()->getUpdate()->getHandles());
+        $html .= '<p style="font-size: 14px;margin:5px 0;border-bottom:1px dashed black;">';
         $html .= '<strong>Rendered Blocks</strong>';
         $html .= '</p>';
         foreach ($this->_debug['blocks'] as $block) {

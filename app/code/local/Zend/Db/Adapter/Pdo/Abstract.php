@@ -235,22 +235,20 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
         }
 
         // Bubble_Debug start
-        $start = microtime(true);
-        $result = parent::query($sql, $bind);
-
-        if (class_exists('Mage')) {
-            Mage::dispatchEvent('bubble_debug_sql_query_before', array(
-                'adapter'   => $this,
-                'query'     => $sql,
-                'bind'      => $bind,
-                'took'      => microtime(true) - $start,
-            ));
-        }
-
-        return $result;
-        // Bubble_Debug end
         try {
-            return parent::query($sql, $bind);
+            $start = microtime(true);
+            $result = parent::query($sql, $bind);
+
+            if (class_exists('Mage')) {
+                Mage::dispatchEvent('bubble_debug_sql_query_before', array(
+                    'adapter'   => $this,
+                    'query'     => $sql,
+                    'bind'      => $bind,
+                    'took'      => microtime(true) - $start,
+                ));
+            }
+
+            return $result;
         } catch (PDOException $e) {
             /**
              * @see Zend_Db_Statement_Exception
@@ -258,6 +256,7 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
             #require_once 'Zend/Db/Statement/Exception.php';
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
         }
+        // Bubble_Debug end
     }
 
     /**
