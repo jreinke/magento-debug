@@ -2,8 +2,8 @@
 /**
  * @category    Bubble
  * @package     Bubble_Debug
- * @version     1.0.2
- * @copyright   Copyright (c) 2014 BubbleShop (https://www.bubbleshop.net)
+ * @version     1.1.0
+ * @copyright   Copyright (c) 2016 BubbleShop (https://www.bubbleshop.net)
  */
 class Bubble_Debug_Model_Observer
 {
