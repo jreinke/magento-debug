@@ -1,0 +1,3 @@
+app/etc/modules/Bubble_Debug.xml                   app/etc/modules/Bubble_Debug.xml
+app/code/community/Bubble/Debug/                   app/code/community/Bubble/Debug/
+app/code/local/Zend/Db/Adapter/Pdo/                app/code/local/Zend/Db/Adapter/Pdo/
